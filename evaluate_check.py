@@ -1,40 +1,40 @@
 # evaluate_check.py
 #def evaluate_check(X_train, X_test, y_train, y_test, le, models):
     
-    è stata implementata per verificare l'effettivo addestramento dei modelli,ovvero:
-    -viene verificata la forma delle feature dopo aver effettuato la feature selection.
-    -vengono stampati le prime 5 righe di `X_train` per controllare i dati (verificare che siano normalizzati).
-    -vengono nuovamente addestrati e testati i modelli per un ulteriore verifica.
+    #è stata implementata per verificare l'effettivo addestramento dei modelli,ovvero:
+    #-viene verificata la forma delle feature dopo aver effettuato la feature selection.
+    #-vengono stampati le prime 5 righe di `X_train` per controllare i dati (verificare che siano normalizzati).
+    #-vengono nuovamente addestrati e testati i modelli per un ulteriore verifica.
     
-      Questa funzione è utile per assicurarsi che:
-    - la selezione delle feature è stata applicata correttamente (con il giusto numero di feature).
-    - i modelli siano addestrati sulle feature selezionate e valutati correttamente.
+    #Questa funzione è utile per assicurarsi che:
+    #-la selezione delle feature è stata applicata correttamente (con il giusto numero di feature).
+    -#i modelli siano addestrati sulle feature selezionate e valutati correttamente.
     
-    Parameters:
-    - X_train, X_test: dati di addestramento e test con feature selezionate.
-    - y_train, y_test: etichette di addestramento e test.
-    - le: oggetto LabelEncoder per decodificare le etichette (target).
-    - models: Dizionario dei modelli da addestrare e testare.
+    #Parameters:
+    #-X_train, X_test: dati di addestramento e test con feature selezionate.
+    #-y_train, y_test: etichette di addestramento e test.
+    #-le: oggetto LabelEncoder per decodificare le etichette (target).
+    #-models: Dizionario dei modelli da addestrare e testare.
     
     
     #verifica la forma di X_train e X_test dopo la feature selection
-    print(f"Shape X_train (dopo feature selection): {X_train.shape}")
-    print(f"Shape X_test (dopo feature selection): {X_test.shape}")
+    #print(f"Shape X_train (dopo feature selection): {X_train.shape}")
+    #print(f"Shape X_test (dopo feature selection): {X_test.shape}")
 
     #mostra le prime 5 righe di X_train per un rapido controllo visivo
-    print("Prime 5 feature di X_train:")
-    print(X_train[:5])
+    #print("Prime 5 feature di X_train:")
+    #print(X_train[:5])
 
     #addestramento e valutazione dei modelli
-    for name, model in models.items():
-        model.fit(X_train, y_train)
-        print(f"{name} addestrato correttamente? Sì")
+    #for name, model in models.items():
+        #model.fit(X_train, y_train)
+        #print(f"{name} addestrato correttamente? Sì")
         
         # Calcola la previsione e l'accuracy per il test
-        acc = evaluate_model(model, X_test, y_test, le, name=name)
+        #acc = evaluate_model(model, X_test, y_test, le, name=name)
         
-        # Aggiungi l'accuracy al dizionario dei risultati
-        models_acc[name] = acc
+        #Aggiungi l'accuracy al dizionario dei risultati
+        #models_acc[name] = acc
 
 import pickle
 from sklearn.metrics import accuracy_score, classification_report
