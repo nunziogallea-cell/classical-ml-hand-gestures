@@ -1,7 +1,7 @@
 from sklearn.preprocessing import MinMaxScaler, LabelEncoder
 from sklearn.feature_selection import SelectKBest, f_classif
 from sklearn.model_selection import train_test_split
-import sys  # Importiamo sys per usare sys.stdout.flush()
+import sys
 
 def preprocess_data(df, target_col='target', test_size=0.2, random_state=42):
     # Suddivisione features e labels
@@ -37,4 +37,8 @@ def preprocess_data(df, target_col='target', test_size=0.2, random_state=42):
     
     return X_train_selected, X_test_selected, y_train, y_test, le, selector
 
- 
+
+if __name__ == "__main__":
+    # Carica il DataFrame e chiama la funzione se eseguito come script
+    df = pd.read_csv("DYLEM-GRID_Statistic.csv")
+    preprocess_data(df)
