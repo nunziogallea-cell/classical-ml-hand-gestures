@@ -19,7 +19,7 @@ def preprocess_data(df, target_col='target', test_size=0.2, random_state=42):
     le = LabelEncoder()
     y_encoded = le.fit_transform(y)
     
-    #suddivisione dei dati per l'addestramento e per il test (80% dei dati usati per l'addestramento e 20% per il training)
+    #suddivisione dei dati per l'addestramento e per il test (80% dei dati usati per l'addestramento e 20% per il test)
     X_train, X_test, y_train, y_test = train_test_split(
         X, y_encoded, test_size=test_size, stratify=y_encoded, random_state=random_state
     )
