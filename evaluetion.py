@@ -1,7 +1,6 @@
 # evaluate.py
 import pickle
 from sklearn.metrics import accuracy_score, classification_report
-import matplotlib.pyplot as plt
 
 def evaluate_model(model, X_test, y_test, le, name="Model"):
     y_pred = model.predict(X_test)
@@ -11,20 +10,6 @@ def evaluate_model(model, X_test, y_test, le, name="Model"):
     print(classification_report(y_test, y_pred, target_names=le.classes_), flush=True)
     return acc
 
-def plot_accuracy(models_acc):
-    models = list(models_acc.keys())
-    acc = list(models_acc.values())
-
-    plt.figure(figsize=(8,5))
-    bars = plt.bar(models, acc, color=['skyblue', 'lightgreen', 'salmon'])
-    for bar in bars:
-        yval = bar.get_height()
-        plt.text(bar.get_x() + bar.get_width()/2, yval + 0.002, f"{yval:.3f}", ha='center', va='bottom')
-    plt.ylim(0.0, 1.0)
-    plt.ylabel("Accuracy")
-    plt.title("Confronto Accuracy modelli")
-    plt.show()
-
 if __name__ == "__main__":
     # Carica dati preprocessati e modelli addestrati
     with open("preprocessed_data.pkl", "rb") as f:
@@ -32,10 +17,9 @@ if __name__ == "__main__":
     with open("trained_models.pkl", "rb") as f:
         trained_models = pickle.load(f)
 
-    models_acc = {}
+    # Valuta tutti i modelli e stampa metriche
     for name, model in trained_models.items():
-        acc = evaluate_model(model, X_test, y_test, le, name=name)
-        models_acc[name] = acc
+        evaluate_model(model, X_test, y_test, le, name=name)
 
-    plot_accuracy(models_acc)
+
 
